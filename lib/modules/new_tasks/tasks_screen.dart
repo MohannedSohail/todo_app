@@ -15,19 +15,17 @@ class TasksScreen extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {
-          var tasks = AppCubit.get(context).tasks;
+          var tasks = AppCubit.get(context).newTasks;
 
           return tasks.length == 0
-              ? Container(
-                  child: Text("There Is No Tasks"),
-                  alignment: Alignment.center,
-                )
+              ? appNoData(icon: Icons.menu,txt: "There Is No Tasks")
               : ListView.separated(
-                  itemBuilder: (context, index) => buildTaskItem(tasks[index]),
+                  itemBuilder: (context, index) => buildTaskItem(tasks[index],context,true,true),
                   separatorBuilder: (context, index) => Container(
+                    margin: EdgeInsets.only(left: 15,right: 15),
                         width: double.infinity,
                         height: 2,
-                        color: Colors.grey[300],
+                        color: Colors.grey[350],
                       ),
                   itemCount: tasks.length);
         });

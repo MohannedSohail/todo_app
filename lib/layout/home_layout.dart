@@ -209,7 +209,7 @@ class HomeLayout extends StatelessWidget {
             ),
             // body: tasks!.length == 0
 
-            body: state is AppGetDatabaseLoadingState || cubit.tasks.length==0
+            body: state is AppGetDatabaseLoadingState
                 ? Center(
                 child: CircularProgressIndicator(
                   strokeWidth: 6,
