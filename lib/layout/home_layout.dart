@@ -187,28 +187,74 @@ class HomeLayout extends StatelessWidget {
               },
               child: Icon(cubit.fabIcon, size: 28, color: Colors.black),
             ),
-            bottomNavigationBar: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              elevation: 30,
-              currentIndex: cubit.currentIndex,
-              onTap: (index) {
 
-                cubit.changeIndex(index);
-                // setState(() {
-                //   _currentIndex = index;
-                // });
-                print("On Tap Index ==> $index");
-              },
-              items: [
-                BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Tasks"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.check_circle_outline), label: "Done"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.archive_outlined), label: "Archived"),
-              ],
+            // bottomNavigationBar: BottomNavigationBar(
+            //   type: BottomNavigationBarType.fixed,
+            //   elevation: 30,
+            //   currentIndex: cubit.currentIndex,
+            //   onTap: (index) {
+            //
+            //     cubit.changeIndex(index);
+            //     // setState(() {
+            //     //   _currentIndex = index;
+            //     // });
+            //     print("On Tap Index ==> $index");
+            //   },
+            //   items: [
+            //     BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Tasks"),
+            //     BottomNavigationBarItem(
+            //         icon: Icon(Icons.check_circle_outline), label: "Done"),
+            //     BottomNavigationBarItem(
+            //         icon: Icon(Icons.archive_outlined), label: "Archived"),
+            //   ],
+            // ),
+
+
+
+
+
+            bottomNavigationBar:NavigationBarTheme(
+              data: NavigationBarThemeData(
+                indicatorColor: Colors.white.withOpacity(0.8),
+                labelTextStyle: MaterialStateProperty.all(
+                  TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+
+              ),
+              child: NavigationBar(
+                backgroundColor: Colors.blue,
+                animationDuration: Duration(seconds: 1),
+                height: 58,
+                labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+                selectedIndex: cubit.currentIndex,
+                onDestinationSelected: (int newIndex) {
+                 cubit.changeIndex(newIndex);
+                },
+                destinations: const [
+                  NavigationDestination(
+                    selectedIcon: Icon(Icons.menu),
+                    icon: Icon(Icons.menu_outlined),
+                    label: 'Tasks',
+                  ),
+                  NavigationDestination(
+                    selectedIcon: Icon(Icons.check_circle,color: Colors.green,),
+                    icon: Icon(Icons.check_circle_outline),
+                    label: 'Done',
+                  ),
+                  NavigationDestination(
+                    selectedIcon: Icon(Icons.archive),
+                    icon: Icon(Icons.archive_outlined),
+                    label: 'Archived',
+                  ),
+                ],
+              ),
             ),
-            // body: tasks!.length == 0
 
+
+            // body: tasks!.length == 0
             body: state is AppGetDatabaseLoadingState
                 ? Center(
                 child: CircularProgressIndicator(

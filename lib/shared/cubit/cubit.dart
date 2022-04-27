@@ -134,6 +134,12 @@ class AppCubit extends Cubit<AppStates> {
         }else{
           archivedTasks.add(element);
         }
+
+
+          print("New Tasks => $newTasks");
+          print("Done Tasks => $doneTasks");
+          print("Archived Tasks => $archivedTasks");
+
       });
 
       titleController.clear();
@@ -164,6 +170,12 @@ class AppCubit extends Cubit<AppStates> {
 
       getDataFromDatabase(database);
       emit(AppDeleteDatabaseState());
+
+      print(" The Deleted Value Is ==> $value");
+
+      print("New Tasks => $newTasks");
+      print("Done Tasks => $doneTasks");
+      print("Archived Tasks => $archivedTasks");
     });
   }
 }

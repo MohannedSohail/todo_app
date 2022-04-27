@@ -176,3 +176,28 @@ Widget appNoData(
     ),
   );
 }
+
+
+
+// Bottom Navigation Bar
+
+// bottomNavigationBar: BottomNavigationBar(
+//   type: BottomNavigationBarType.fixed,
+//   elevation: 30,
+//   currentIndex: cubit.currentIndex,
+//   onTap: (index) {
+//
+//     cubit.changeIndex(index);
+//     // setState(() {
+//     //   _currentIndex = index;
+//     // });
+//     print("On Tap Index ==> $index");
+//   },
+//   items: [
+//     BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Tasks"),
+//     BottomNavigationBarItem(
+//         icon: Icon(Icons.check_circle_outline), label: "Done"),
+//     BottomNavigationBarItem(
+//         icon: Icon(Icons.archive_outlined), label: "Archived"),
+//   ],
+// )
